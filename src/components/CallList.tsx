@@ -4,14 +4,14 @@ import MeetingCard from "./MeetingCard";
 
 import { useGetCalls } from "@/hooks/useGetCalls";
 import { Call } from "@stream-io/video-react-sdk";
-import { CallRecording } from "@stream-io/node-sdk";
+import { CallRecording } from "@stream-io/video-react-sdk";
 import Loader from "./Loader";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 
 const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
   const router = useRouter();
-  const [recordings, setRecordings] = useState([]);
+  const [recordings, setRecordings] = useState<CallRecording[]>([]);
   const {toast} = useToast();
 
   const { endedCalls, upcomingCalls, callRecordings, isLoading } =
@@ -53,6 +53,8 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
         const recordings = callData
           .filter((call) => call.recordings.length > 0)
           .flatMap((call) => call.recordings);
+
+          setRecordings(recordings);
       } catch (error) {
         console.error(error);
         toast({title: "error in fetching recordings. try again!"})

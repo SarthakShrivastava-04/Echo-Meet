@@ -26,12 +26,13 @@ const Table = ({
   );
 };
 
+const meetingId = crypto.randomUUID();
+
 const PersonalRoom = () => {
   const { user } = useUser();
   const client = useStreamVideoClient();
   const { toast } = useToast();
   const router = useRouter();
-  const meetingId = crypto.randomUUID();
 
   const { call } = useGetCallById(meetingId!);
 
