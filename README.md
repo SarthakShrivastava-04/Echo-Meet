@@ -11,7 +11,7 @@ You can check out the deployed app here: [Echo-Meet](https://echo-meet-j2o9.verc
 
 ## Tech Stack 🛠️
 
-- **Frontend**: Next.js (TypeScript), Tailwind CSS, ShadCN
+- **Frontend**: Next.js, TypeScript, Tailwind CSS, ShadCN
 - **Backend**: Next.js API Routes
 - **Auth**: Clerk
 - **Video API**: Stream API SDK
